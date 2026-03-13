@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO -->
+    <title>Gauchão Restaurante | Cozinha Industrial</title>
+    <meta name="description" content="Gauchão Industrial: Especialista em alimentação coletiva e soluções de cozinha industrial em Campo Grande - MS.">
+    <meta name="author" content="Gauchão Industrial">
+    <link rel="canonical" href="https://gauchaoindustrial.com.br/">
+
+    <!-- Social Media (Open Graph) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Gauchão Industrial - Alimentação de Qualidade">
+    <meta property="og:description" content="Soluções em alimentação corporativa. Acesse nossos contatos e localização.">
+    <meta property="og:image" content="https://gauchaoindustrial.com.br/wp-content/uploads/2023/11/LOGO-BRANCA-Copia.png">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Dados Estruturados -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Gauchão Restaurante e Cozinha Industrial",
+      "image": "https://gauchaoindustrial.com.br/wp-content/uploads/2023/11/LOGO-BRANCA-Copia.png",
+      "url": "https://gauchaoindustrial.com.br/",
+      "telephone": "+5567999850031",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Gunter Hans, 1512 - Jardim Leblon",
+        "addressLocality": "Campo Grande",
+        "addressRegion": "MS",
+        "postalCode": "79092-001",
+        "addressCountry": "BR"
+      }
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #000000;
+            --accent-color: #f1c40f;
+            --google-blue: #4285F4;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container { width: 100%; max-width: 450px; text-align: center; }
+
+        header { margin: 20px 0 25px; }
+
+        .logo-box {
+            width: 120px; height: 120px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex; align-items: center; justify-content: center;
+            border: 4px solid var(--white);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .logo-box img { width: 80%; height: auto; object-fit: contain; }
+
+        h1 { font-size: 1.5rem; color: var(--primary-color); margin-bottom: 5px; }
+        .subtitle { font-size: 0.85rem; color: #666; margin-bottom: 15px; }
+
+        /* Estilo Links */
+        nav { display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; }
+
+        .link-card {
+            background-color: var(--white); color: var(--text-color);
+            text-decoration: none; padding: 16px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: space-between;
+            border: 1px solid #e0e0e0; font-weight: 600; font-size: 0.95rem;
+            transition: transform 0.2s;
+        }
+
+        .link-card:active { transform: scale(0.98); }
+        .link-card i { font-size: 1.3rem; width: 30px; }
+        .btn-text { flex-grow: 1; text-align: left; margin-left: 10px; }
+        .featured { background-color: var(--primary-color); color: white; border: none; }
+
+        /* Selo Google */
+        .google-card {
+            background: white; padding: 15px; border-radius: 16px; margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: flex; flex-direction: column; align-items: center;
+            text-decoration: none; color: inherit; border: 1px solid #eee;
+        }
+        .rating-header { color: var(--google-blue); font-weight: 700; font-size: 0.8rem; display: flex; align-items: center; gap: 5px; }
+        .stars { color: var(--accent-color); font-size: 1.1rem; margin: 3px 0; }
+        .review-count { font-size: 0.8rem; color: #555; }
+
+        /* CARROSSEL DE PARCEIROS */
+        .partners-container {
+            width: 100%;
+            overflow: hidden;
+            background: white;
+            padding: 20px 0;
+            border-radius: 16px;
+            border: 1px solid #eee;
+            margin-top: 10px;
+        }
+
+        .partners-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .slider {
+            display: flex;
+            width: calc(150px * 28); /* Ajuste baseado no número de logos duplicadas */
+            animation: scroll 40s linear infinite;
+        }
+
+        .slider img {
+            width: 120px;
+            height: 60px;
+            object-fit: contain;
+            margin: 0 15px;
+            filter: grayscale(20%); /* Deixa um pouco mais elegante */
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-150px * 14)); } /* Metade do número total de logos */
+        }
+
+        footer { margin: 40px 0 30px; font-size: 0.75rem; color: #aaa; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo-box">
+                <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2023/11/LOGO-BRANCA-Copia.png" alt="Logo Gauchão">
+            </div>
+            <h1>Gauchão Industrial</h1>
+            <p class="subtitle">Excelência em Alimentação Corporativa</p>
+        </header>
+
+        <main>
+            <!-- Avaliações Google -->
+            <a href="https://share.google/MgowF4yCEcKVHnhTk" class="google-card" target="_blank">
+                <div class="rating-header"><i class="fab fa-google"></i> AVALIAÇÕES NO GOOGLE</div>
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <div class="review-count">Clique para ver os depoimentos</div>
+            </a>
+
+            <nav>
+                <a href="https://gauchaoindustrial.com.br/" class="link-card featured" target="_blank">
+                    <i class="fas fa-globe"></i><span class="btn-text">Nosso Site Oficial</span><i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="https://wa.me/5567999850031" class="link-card" target="_blank">
+                    <i class="fab fa-whatsapp" style="color: #25D366;"></i><span class="btn-text">Falar com Consultor</span><i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="https://www.instagram.com/gauchaoindustrial/" class="link-card" target="_blank">
+                    <i class="fab fa-instagram" style="color: #E1306C;"></i><span class="btn-text">Instagram</span><i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="https://www.facebook.com/gauchaoindustrial" class="link-card" target="_blank">
+                    <i class="fab fa-facebook" style="color: #1877F2;"></i><span class="btn-text">Página no Facebook</span><i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="https://br.linkedin.com/company/gauch%C3%A3o-restaurante-e-cozinha-industrial" class="link-card" target="_blank">
+                    <i class="fab fa-linkedin" style="color: #0077B5;"></i><span class="btn-text">LinkedIn Business</span><i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="https://share.google/MgowF4yCEcKVHnhTk" class="link-card" target="_blank">
+                    <i class="fas fa-map-marker-alt" style="color: #EA4335;"></i><span class="btn-text">Ver Localização</span><i class="fas fa-chevron-right"></i>
+                </a>
+            </nav>
+
+            <!-- Sessão de Parceiros (Carrossel) -->
+            <section class="partners-container">
+                <p class="partners-title">Empresas que confiam em nós</p>
+                <div class="slider">
+                    <!-- Logos (Conjunto 1) -->
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2025/07/image-12.fw_.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2025/07/image-11.fw_.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-13.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-1-2.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-2-2.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-5-2.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-4-2.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-3-2.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-6-2.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-7-3.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-9-3.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-10-2.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/parcetec-logo-2.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-8-2.png" alt="Parceiro">
+                    
+                    <!-- Logos (Conjunto 2 para Loop Infinito) -->
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2025/07/image-12.fw_.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2025/07/image-11.fw_.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-13.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-1-2.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-2-2.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-5-2.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-4-2.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-3-2.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-6-2.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-7-3.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-9-3.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-10-2.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/parcetec-logo-2.png" alt="Parceiro">
+                    <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-8-2.png" alt="Parceiro">
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; Gauchão Restaurante e Cozinha Industrial</p>
+            <p>Qualidade que Alimenta o Trabalho.</p>
+        </footer>
+    </div>
+
+</body>
+</html>

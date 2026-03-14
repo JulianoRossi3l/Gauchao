@@ -3,66 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#f8f9fa">
+    <title>Gauchão Restaurante | Pro</title>
     
-    <!-- SEO & Metadados -->
-    <title>Gauchão Restaurante | Cozinha Industrial</title>
-    <meta name="description" content="Gauchão Industrial: Especialista em alimentação coletiva e soluções de cozinha industrial em Três Lagoas - MS.">
-    <link rel="canonical" href="https://gauchaoindustrial.com.br/">
-
-    <!-- Social Media (Open Graph) -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Gauchão Industrial - Alimentação de Qualidade">
-    <meta property="og:image" content="https://i.bj-share.info/5113cf48d47abe1abe1edc956fc96af2.png">
-
-    <!-- Fonts -->
+    <!-- SEO & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     
+    <!-- Scripts para o Efeito de Partículas (Vanta.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
     <style>
         :root {
-            --primary: #000000;
-            --bg: #f8f9fa;
+            --neon-pink: #ff007f;
             --white: #ffffff;
-            --border: #eeeeee;
+            --glass: rgba(255, 255, 255, 0.85); /* Efeito de Vidro */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
         body { 
-            background-color: var(--bg); 
-            color: #333; 
             font-family: 'Inter', sans-serif;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* Container do Background Animado */
+        #vanta-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Fica atrás de tudo */
+        }
+
+        .container { 
+            width: 100%; 
+            max-width: 420px; 
+            text-align: center; 
             padding: 20px;
+            z-index: 1;
         }
 
-        .container { width: 100%; max-width: 420px; text-align: center; }
-
-        /* AJUSTE DO TAMANHO DO LOGOTIPO AQUI */
-        header { 
-            margin: 10px 0 25px; 
-            display: flex;
-            justify-content: center;
-        }
+        /* Header e Logo */
+        header { margin: 15px 0 25px; }
         .logo-container {
             width: 100%;
-            max-width: 180px; /* <--- MUDE ESTE VALOR (ex: 150px ou 220px) PARA AJUSTAR O TAMANHO */
+            max-width: 180px; 
+            margin: 0 auto;
+            /* Filtro para garantir que a logo apareça bem sobre o fundo escuro se necessário */
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
         }
-        .logo-container img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-        }
+        .logo-container img { width: 100%; height: auto; }
 
-        /* Botão Site */
+        /* Botões Estilo Glassmorphism (Vidro) */
         .btn-site {
-            background-color: var(--primary);
+            background-color: var(--neon-pink); /* Site ganha a cor do Neon */
             color: var(--white);
             text-decoration: none;
-            padding: 16px;
+            padding: 18px;
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -70,10 +73,10 @@
             font-weight: 700;
             margin-bottom: 12px;
             gap: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+            transition: 0.3s;
         }
 
-        /* Grade de Ícones */
         .social-grid {
             display: flex;
             justify-content: space-between;
@@ -81,7 +84,8 @@
             margin-bottom: 25px;
         }
         .social-item {
-            background: var(--white);
+            background: var(--glass);
+            backdrop-filter: blur(10px); /* Desfoque atrás do botão */
             width: 100%;
             aspect-ratio: 1/1;
             border-radius: 16px;
@@ -90,15 +94,14 @@
             justify-content: center;
             text-decoration: none;
             font-size: 1.5rem;
-            border: 1px solid var(--border);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
         }
-        .social-item:active, .btn-site:active, .btn-save:active { transform: scale(0.95); }
 
-        /* Salvar Contato */
         .btn-save {
-            background-color: #e8f5e9;
-            color: var(--primary);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: var(--white);
             text-decoration: none;
             padding: 15px;
             border-radius: 16px;
@@ -107,22 +110,26 @@
             justify-content: center;
             gap: 10px;
             font-weight: 700;
-            border: 2px solid var(--primary);
+            border: 1px solid var(--neon-pink);
             margin-bottom: 30px;
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.2);
         }
+
+        .social-item:active, .btn-site:active, .btn-save:active { transform: scale(0.95); }
 
         /* Carrossel Parceiros */
         .partners-section {
-            background: var(--white);
+            background: var(--glass);
+            backdrop-filter: blur(5px);
             border-radius: 20px;
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255,255,255,0.3);
             padding: 15px 0;
             overflow: hidden;
         }
         .partners-title {
             font-size: 0.65rem;
             font-weight: 700;
-            color: #bbb;
+            color: #333;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 12px;
@@ -135,21 +142,25 @@
             100% { transform: translateX(calc(-130px * 14)); }
         }
 
-        footer { margin: 30px 0 20px; font-size: 0.7rem; color: #aaa; }
+        footer { margin: 30px 0 20px; font-size: 0.7rem; color: rgba(255,255,255,0.6); }
     </style>
 </head>
 <body>
 
+    <!-- Div onde a animação será aplicada -->
+    <div id="vanta-bg"></div>
+
     <div class="container">
         <header>
             <div class="logo-container">
-                <img src="https://i.bj-share.info/5113cf48d47abe1abe1edc956fc96af2.png" alt="Logotipo Gauchão">
+                <!-- Usando o link da sua logo completa -->
+                <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2023/11/LOGO-BRANCA.png" alt="Logotipo Gauchão">
             </div>
         </header>
 
         <main>
             <a href="https://gauchaoindustrial.com.br/" class="btn-site">
-                <i class="fas fa-globe"></i> NOSSO SITE OFICIAL
+                <i class="fas fa-globe"></i> VISITE NOSSO SITE
             </a>
 
             <nav class="social-grid">
@@ -177,7 +188,7 @@
             <section class="partners-section">
                 <p class="partners-title">Empresas que confiam em nós</p>
                 <div class="slider">
-                    <!-- Logos -->
+                    <!-- Logos dos parceiros -->
                     <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2025/07/image-12.fw_.png">
                     <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2025/07/image-11.fw_.png">
                     <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-13.png">
@@ -217,13 +228,29 @@
     </div>
 
     <script>
+        // Inicialização do Vanta.js NET
+        VANTA.NET({
+          el: "#vanta-bg",
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          color: 0xff007f, // ROSA NEON
+          backgroundColor: 0x050505, // FUNDO QUASE PRETO PARA O NEON BRILHAR
+          points: 12.00, // DENSIDADE DE PONTOS
+          maxDistance: 20.00,
+          spacing: 16.00
+        });
+
+        // Scripts de funcionalidade
         function openApp(appUrl, webUrl) {
             const start = Date.now();
             window.location.href = appUrl;
             setTimeout(() => {
-                if (Date.now() - start < 1000) {
-                    window.location.href = webUrl;
-                }
+                if (Date.now() - start < 1000) { window.location.href = webUrl; }
             }, 600);
         }
 
@@ -242,7 +269,6 @@ END:VCARD`;
             link.download = "Gauchao_Industrial.vcf";
             link.href = url;
             link.click();
-            window.URL.revokeObjectURL(url);
         }
     </script>
 </body>

@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gauchão Restaurante</title>
+    <title>Gauchão Restaurante | Oficial</title>
     
-    <!-- SEO & Fonts -->
+    <!-- SEO & Metadados -->
+    <meta name="description" content="Gauchão Industrial: Especialista em alimentação coletiva e soluções de cozinha industrial em Três Lagoas - MS.">
+    <link rel="canonical" href="https://gauchaoindustrial.com.br/">
+    <meta property="og:image" content="https://gauchaoindustrial.com.br/wp-content/uploads/2023/11/LOGO-BRANCA.png">
+
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Scripts para o Efeito de Partículas (Vanta.js) -->
+    <!-- Vanta.js Animado -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
 
@@ -17,152 +22,104 @@
         :root {
             --neon-pink: #ff007f;
             --white: #ffffff;
-            --glass: rgba(255, 255, 255, 0.85); /* Efeito de Vidro */
+            --glass: rgba(255, 255, 255, 0.88);
+            --google-blue: #4285F4;
+            --accent-color: #f1c40f;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
-        body { 
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-        }
+        body { font-family: 'Inter', sans-serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; overflow-x: hidden; background-color: #050505; }
 
-        /* Container do Background Animado */
-        #vanta-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Fica atrás de tudo */
-        }
+        #vanta-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 
-        .container { 
-            width: 100%; 
-            max-width: 420px; 
-            text-align: center; 
-            padding: 20px;
-            z-index: 1;
-        }
+        .container { width: 100%; max-width: 420px; text-align: center; padding: 20px; z-index: 1; }
 
         /* Header e Logo */
-        header { margin: 15px 0 25px; }
-        .logo-container {
-            width: 100%;
-            max-width: 180px; 
-            margin: 0 auto;
-            /* Filtro para garantir que a logo apareça bem sobre o fundo escuro se necessário */
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
-        }
+        header { margin-bottom: 20px; }
+        .logo-container { width: 100%; max-width: 190px; margin: 0 auto; filter: drop-shadow(0 0 8px rgba(255,255,255,0.2)); }
         .logo-container img { width: 100%; height: auto; }
 
-        /* Botões Estilo Glassmorphism (Vidro) */
+        /* Selo Google (RE-ADICIONADO) */
+        .google-card {
+            background: var(--glass); backdrop-filter: blur(10px);
+            padding: 15px; border-radius: 18px; margin-bottom: 20px;
+            display: flex; flex-direction: column; align-items: center;
+            text-decoration: none; color: #333; border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+        }
+        .rating-header { color: var(--google-blue); font-weight: 700; font-size: 0.75rem; display: flex; align-items: center; gap: 6px; text-transform: uppercase; }
+        .stars { color: var(--accent-color); font-size: 1.1rem; margin: 4px 0; }
+        .review-count { font-size: 0.75rem; color: #666; font-weight: 600; }
+
+        /* Botões */
         .btn-site {
-            background-color: var(--neon-pink); /* Site ganha a cor do Neon */
-            color: var(--white);
-            text-decoration: none;
-            padding: 18px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            margin-bottom: 12px;
-            gap: 10px;
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
-            transition: 0.3s;
+            background-color: var(--neon-pink); color: var(--white);
+            text-decoration: none; padding: 18px; border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; margin-bottom: 12px; gap: 10px;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.4); transition: 0.3s;
         }
 
-        .social-grid {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
+        .social-grid { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 20px; }
         .social-item {
-            background: var(--glass);
-            backdrop-filter: blur(10px); /* Desfoque atrás do botão */
-            width: 100%;
-            aspect-ratio: 1/1;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.3);
+            background: var(--glass); backdrop-filter: blur(10px);
+            width: 100%; aspect-ratio: 1/1; border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; font-size: 1.6rem; border: 1px solid rgba(255,255,255,0.3);
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
         }
 
         .btn-save {
-            background-color: rgba(0, 0, 0, 0.7);
-            color: var(--white);
-            text-decoration: none;
-            padding: 15px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-weight: 700;
-            border: 1px solid var(--neon-pink);
-            margin-bottom: 30px;
-            box-shadow: 0 0 10px rgba(255, 0, 127, 0.2);
+            background-color: rgba(0, 0, 0, 0.8); color: var(--white);
+            text-decoration: none; padding: 16px; border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            gap: 10px; font-weight: 700; border: 1px solid var(--neon-pink);
+            margin-bottom: 25px; font-size: 0.9rem;
         }
 
-        .social-item:active, .btn-site:active, .btn-save:active { transform: scale(0.95); }
+        .social-item:active, .btn-site:active, .btn-save:active, .google-card:active { transform: scale(0.95); }
 
         /* Carrossel Parceiros */
         .partners-section {
-            background: var(--glass);
-            backdrop-filter: blur(5px);
-            border-radius: 20px;
+            background: var(--glass); backdrop-filter: blur(5px);
+            border-radius: 22px; padding: 20px 0; overflow: hidden;
             border: 1px solid rgba(255,255,255,0.3);
-            padding: 15px 0;
-            overflow: hidden;
         }
-        .partners-title {
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: #333;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-        }
-        .slider { display: flex; width: calc(130px * 28); animation: scroll 40s linear infinite; }
-        .slider img { width: 100px; height: 50px; object-fit: contain; margin: 0 15px; }
+        .partners-title { font-size: 0.65rem; font-weight: 800; color: #555; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+        .slider { display: flex; width: calc(140px * 28); animation: scroll 40s linear infinite; }
+        .slider img { width: 110px; height: 55px; object-fit: contain; margin: 0 15px; }
 
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-130px * 14)); }
-        }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-140px * 14)); } }
 
-        footer { margin: 30px 0 20px; font-size: 0.7rem; color: rgba(255,255,255,0.6); }
+        footer { margin: 30px 0; font-size: 0.7rem; color: rgba(255,255,255,0.5); font-weight: 500; }
     </style>
 </head>
 <body>
 
-    <!-- Div onde a animação será aplicada -->
     <div id="vanta-bg"></div>
 
     <div class="container">
         <header>
             <div class="logo-container">
-                <!-- Usando o link da sua logo completa -->
-                <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2023/11/LOGO-BRANCA.png" alt="Logotipo Gauchão">
+                <img src="https://i.bj-share.info/5113cf48d47abe1abe1edc956fc96af2.png" alt="Gauchão Industrial">
             </div>
         </header>
 
         <main>
-            <a href="https://gauchaoindustrial.com.br/" class="btn-site">
-                <i class="fas fa-globe"></i> VISITE NOSSO SITE
+            <!-- Selo Google (Localização/Avaliação) -->
+            <a href="https://share.google/MgowF4yCEKVHnhTk" class="google-card" target="_blank">
+                <div class="rating-header"><i class="fab fa-google"></i> AVALIAÇÕES NO GOOGLE</div>
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <div class="review-count">Clique para ler depoimentos reais</div>
             </a>
 
+            <!-- Botão Site -->
+            <a href="https://gauchaoindustrial.com.br/" class="btn-site">
+                <i class="fas fa-globe"></i> NOSSO SITE OFICIAL
+            </a>
+
+            <!-- Grade Social -->
             <nav class="social-grid">
                 <a href="https://wa.me/5567998500310" class="social-item">
                     <i class="fab fa-whatsapp" style="color: #25D366;"></i>
@@ -170,12 +127,14 @@
                 <a href="javascript:void(0)" onclick="openApp('instagram://user?username=gauchaoindustrial', 'https://www.instagram.com/_u/gauchaoindustrial/')" class="social-item">
                     <i class="fab fa-instagram" style="color: #E1306C;"></i>
                 </a>
+                <!-- Facebook com correção de Deep Link -->
                 <a href="javascript:void(0)" onclick="openApp('fb://facename/gauchaoindustrial', 'https://www.facebook.com/gauchaoindustrial')" class="social-item">
                     <i class="fab fa-facebook" style="color: #1877F2;"></i>
                 </a>
                 <a href="javascript:void(0)" onclick="openApp('linkedin://company/gauchão-restaurante-e-cozinha-industrial', 'https://br.linkedin.com/company/gauch%C3%A3o-restaurante-e-cozinha-industrial')" class="social-item">
                     <i class="fab fa-linkedin" style="color: #0077B5;"></i>
                 </a>
+                <!-- Localização (CORRIGIDO) -->
                 <a href="https://share.google/MgowF4yCEKVHnhTk" class="social-item">
                     <i class="fas fa-map-marker-alt" style="color: #EA4335;"></i>
                 </a>
@@ -185,10 +144,10 @@
                 <i class="fas fa-user-plus"></i> SALVAR CONTATO NA AGENDA
             </a>
 
+            <!-- Carrossel -->
             <section class="partners-section">
                 <p class="partners-title">Empresas que confiam em nós</p>
                 <div class="slider">
-                    <!-- Logos dos parceiros -->
                     <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2025/07/image-12.fw_.png">
                     <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2025/07/image-11.fw_.png">
                     <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-13.png">
@@ -203,7 +162,7 @@
                     <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-10-2.png">
                     <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/parcetec-logo-2.png">
                     <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-8-2.png">
-                    <!-- Repetição para Loop -->
+                    <!-- Loop -->
                     <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2025/07/image-12.fw_.png">
                     <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2025/07/image-11.fw_.png">
                     <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-13.png">
@@ -228,32 +187,24 @@
     </div>
 
     <script>
-        // Inicialização do Vanta.js NET
+        // Background Animado
         VANTA.NET({
           el: "#vanta-bg",
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.00,
-          minWidth: 200.00,
-          scale: 1.00,
-          scaleMobile: 1.00,
-          color: 0xff007f, // ROSA NEON
-          backgroundColor: 0x050505, // FUNDO QUASE PRETO PARA O NEON BRILHAR
-          points: 12.00, // DENSIDADE DE PONTOS
-          maxDistance: 20.00,
-          spacing: 16.00
+          mouseControls: true, touchControls: true, gyroControls: false,
+          minHeight: 200.00, minWidth: 200.00, scale: 1.00, scaleMobile: 1.00,
+          color: 0xff007f, backgroundColor: 0x050505, points: 12.00, maxDistance: 20.00, spacing: 16.00
         });
 
-        // Scripts de funcionalidade
+        // Lógica Apps (Com proteção para Facebook)
         function openApp(appUrl, webUrl) {
             const start = Date.now();
             window.location.href = appUrl;
             setTimeout(() => {
-                if (Date.now() - start < 1000) { window.location.href = webUrl; }
-            }, 600);
+                if (Date.now() - start < 800) { window.location.href = webUrl; }
+            }, 500);
         }
 
+        // Salvar Contato
         function downloadVCard() {
             const vcard = `BEGIN:VCARD
 VERSION:3.0

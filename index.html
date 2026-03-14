@@ -22,6 +22,7 @@
         :root {
             --neon-pink: #ff007f;
             --white: #ffffff;
+            --black: #000000;
             --glass: rgba(255, 255, 255, 0.88);
             --google-blue: #4285F4;
             --accent-color: #f1c40f;
@@ -35,32 +36,42 @@
 
         .container { width: 100%; max-width: 420px; text-align: center; padding: 20px; z-index: 1; }
 
-        /* Header e Logo */
         header { margin-bottom: 20px; }
         .logo-container { width: 100%; max-width: 190px; margin: 0 auto; filter: drop-shadow(0 0 8px rgba(255,255,255,0.2)); }
         .logo-container img { width: 100%; height: auto; }
 
-        /* Selo Google (RE-ADICIONADO) */
+        /* Selo Google */
         .google-card {
             background: var(--glass); backdrop-filter: blur(10px);
             padding: 15px; border-radius: 18px; margin-bottom: 20px;
             display: flex; flex-direction: column; align-items: center;
             text-decoration: none; color: #333; border: 1px solid rgba(255,255,255,0.3);
             box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+            cursor: pointer;
         }
         .rating-header { color: var(--google-blue); font-weight: 700; font-size: 0.75rem; display: flex; align-items: center; gap: 6px; text-transform: uppercase; }
         .stars { color: var(--accent-color); font-size: 1.1rem; margin: 4px 0; }
         .review-count { font-size: 0.75rem; color: #666; font-weight: 600; }
 
-        /* Botões */
+        /* Botão Site Oficial (AJUSTADO PARA PRETO) */
         .btn-site {
-            background-color: var(--neon-pink); color: var(--white);
-            text-decoration: none; padding: 18px; border-radius: 18px;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 700; margin-bottom: 12px; gap: 10px;
-            box-shadow: 0 0 20px rgba(255, 0, 127, 0.4); transition: 0.3s;
+            background-color: var(--black); 
+            color: var(--white);
+            text-decoration: none; 
+            padding: 18px; 
+            border-radius: 18px;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-weight: 700; 
+            margin-bottom: 12px; 
+            gap: 10px;
+            border: 1px solid var(--neon-pink); /* Borda neon para destaque */
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.3); 
+            transition: 0.3s;
         }
 
+        /* Grade Social */
         .social-grid { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 20px; }
         .social-item {
             background: var(--glass); backdrop-filter: blur(10px);
@@ -70,12 +81,21 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
+        /* Salvar Contato */
         .btn-save {
-            background-color: rgba(0, 0, 0, 0.8); color: var(--white);
-            text-decoration: none; padding: 16px; border-radius: 18px;
-            display: flex; align-items: center; justify-content: center;
-            gap: 10px; font-weight: 700; border: 1px solid var(--neon-pink);
-            margin-bottom: 25px; font-size: 0.9rem;
+            background-color: rgba(0, 0, 0, 0.8); 
+            color: var(--white);
+            text-decoration: none; 
+            padding: 16px; 
+            border-radius: 18px;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            gap: 10px; 
+            font-weight: 700; 
+            border: 1px solid var(--neon-pink);
+            margin-bottom: 25px; 
+            font-size: 0.9rem;
         }
 
         .social-item:active, .btn-site:active, .btn-save:active, .google-card:active { transform: scale(0.95); }
@@ -107,35 +127,34 @@
         </header>
 
         <main>
-            <!-- Selo Google (Localização/Avaliação) -->
-            <a href="https://share.google/6hTIuTlXflbiViQC9" class="google-card" target="_blank">
+            <!-- Selo Google (Sempre para Google Reviews) -->
+            <div class="google-card" onclick="openReviews()">
                 <div class="rating-header"><i class="fab fa-google"></i> AVALIAÇÕES NO GOOGLE</div>
                 <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <div class="review-count">Clique para deixar sua avaliação</div>
-            </a>
+                <div class="review-count">Clique para ver nossa nota e depoimentos</div>
+            </div>
 
-            <!-- Botão Site -->
+            <!-- Botão Site (Agora com fundo preto e borda neon) -->
             <a href="https://gauchaoindustrial.com.br/" class="btn-site">
-                <i class="fas fa-globe"></i> NOSSO SITE OFICIAL
+                <i class="fas fa-globe"></i> VISITE NOSSO SITE
             </a>
 
             <!-- Grade Social -->
             <nav class="social-grid">
-                <a href="https://wa.me/5567998500310" class="social-item">
+                <a href="https://wa.me/5567998500310" class="social-item" title="WhatsApp">
                     <i class="fab fa-whatsapp" style="color: #25D366;"></i>
                 </a>
                 <a href="javascript:void(0)" onclick="openApp('instagram://user?username=gauchaoindustrial', 'https://www.instagram.com/_u/gauchaoindustrial/')" class="social-item">
                     <i class="fab fa-instagram" style="color: #E1306C;"></i>
                 </a>
-                <!-- Facebook com correção de Deep Link -->
                 <a href="javascript:void(0)" onclick="openApp('fb://facename/gauchaoindustrial', 'https://www.facebook.com/gauchaoindustrial')" class="social-item">
                     <i class="fab fa-facebook" style="color: #1877F2;"></i>
                 </a>
                 <a href="javascript:void(0)" onclick="openApp('linkedin://company/gauchão-restaurante-e-cozinha-industrial', 'https://br.linkedin.com/company/gauch%C3%A3o-restaurante-e-cozinha-industrial')" class="social-item">
                     <i class="fab fa-linkedin" style="color: #0077B5;"></i>
                 </a>
-                <!-- Localização (CORRIGIDO) -->
-                <a href="https://share.google/6hTIuTlXflbiViQC9" class="social-item">
+                <!-- Ícone Localização (Inteligente Android/iOS) -->
+                <a href="javascript:void(0)" onclick="openMaps()" class="social-item" title="Ver no Mapa">
                     <i class="fas fa-map-marker-alt" style="color: #EA4335;"></i>
                 </a>
             </nav>
@@ -144,10 +163,11 @@
                 <i class="fas fa-user-plus"></i> SALVAR CONTATO NA AGENDA
             </a>
 
-            <!-- Carrossel -->
+            <!-- Carrossel de Parceiros -->
             <section class="partners-section">
-                <p class="partners-title">Empresas que confiam em nós</p>
+                <p class="partners-title">Parceiros que confiam em nós</p>
                 <div class="slider">
+                    <!-- Logos -->
                     <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2025/07/image-12.fw_.png">
                     <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2025/07/image-11.fw_.png">
                     <img src="https://gauchaoindustrial.com.br/wp-content/uploads/2024/05/image-13.png">
@@ -187,7 +207,7 @@
     </div>
 
     <script>
-        // Background Animado
+        // Efeito Rosa Neon
         VANTA.NET({
           el: "#vanta-bg",
           mouseControls: true, touchControls: true, gyroControls: false,
@@ -195,7 +215,25 @@
           color: 0xff007f, backgroundColor: 0x050505, points: 12.00, maxDistance: 20.00, spacing: 16.00
         });
 
-        // Lógica Apps (Com proteção para Facebook)
+        // Abrir avaliações Google
+        function openReviews() {
+            window.location.href = "https://share.google/6hTIuTlXflbiViQC9";
+        }
+
+        // Função de Mapas Inteligente
+        function openMaps() {
+            const isApple = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+            const googleMapsUrl = "https://share.google/6hTIuTlXflbiViQC9";
+            const appleMapsUrl = "https://maps.apple.com/place?place-id=I8C3358EF33313C20";
+
+            if (isApple) {
+                window.location.href = appleMapsUrl;
+            } else {
+                window.location.href = googleMapsUrl;
+            }
+        }
+
+        // Abrir Apps Social
         function openApp(appUrl, webUrl) {
             const start = Date.now();
             window.location.href = appUrl;
@@ -204,7 +242,7 @@
             }, 500);
         }
 
-        // Salvar Contato
+        // Salvar VCard
         function downloadVCard() {
             const vcard = `BEGIN:VCARD
 VERSION:3.0
@@ -224,4 +262,3 @@ END:VCARD`;
     </script>
 </body>
 </html>
- 

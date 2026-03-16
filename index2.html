@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Google Reviews API</title>
+    
+    <!-- Font Awesome para as estrelas e ícone do Google -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; background-color: #f4f4f4; }
+
+        /* Estilização do Card */
+        .google-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            border: 1px solid #e0e0e0;
+        }
+
+        .google-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .rating-header {
+            font-weight: bold;
+            font-size: 14px;
+            color: #5f6368;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .rating-header i { color: #4285F4; font-size: 18px; }
+
+        .stars-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 5px 0;
+        }
+
+        .rating-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #3c4043;
+        }
+
+        .stars {
+            color: #FBBC05; /* Cor oficial das estrelas do Google */
+            font-size: 18px;
+            display: flex;
+            gap: 2px;
+        }
+
+        .review-count {
+            font-size: 14px;
+            color: #70757a;
+            margin-top: 8px;
+        }
+
+        /* Efeito de carregamento */
+        .loading {
+            color: #999;
+            font-style: italic;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- O Card do Google -->
+    <div class="google-card" id="google-card" onclick="irParaGoogle()">
+        <div class="rating-header">
+            <i class="fab fa-google"></i> AVALIAÇÕES NO GOOGLE
+        </div>
+        
+        <div id="loader" class="loading">Carregando notas atuais...</div>
+        
+        <div id="conteudo-google" style="display: none;">
+            <div class="stars-container">
+                <span class="rating-number" id="nota-google">0.0</span>
+                <div class="stars" id="estrelas-google">
+                    <!-- Estrelas geradas pelo JS -->
+                </div>
+            </div>
+            <div class="review-count">
+                <span id="total-avaliacoes">0</span> avaliações
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. BIBLIOTECA DO GOOGLE MAPS (Substitua SUA_API_KEY_AQUI) -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLFxnMLMlreP6RDseCLQijjY_AtPDlAsU&libraries=places"></script>
+
+    <script>
+        // 2. CONFIGURAÇÕES (Coloque seus dados aqui)
+        const SEU_PLACE_ID = 'ChIJ2cCOKZ6ZkJQRhQ7pqTl6xcc';
+        
+        function irParaGoogle() {
+            // Abre o Google Maps direto na sua empresa
+            window.open(`https://search.google.com/local/reviews?placeid=${SEU_PLACE_ID}`, '_blank');
+        }
+
+        function carregarDadosDoGoogle() {
+            // Cria um serviço de Places (precisa de um elemento HTML temporário)
+            const service = new google.maps.places.PlacesService(document.createElement('div'));
+
+            service.getDetails({
+                placeId: SEU_PLACE_ID,
+                fields: ['rating', 'user_ratings_total'] // Pedimos apenas a nota e o total
+            }, (place, status) => {
+                
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    const nota = place.rating;
+                    const total = place.user_ratings_total;
+
+                    // Atualiza os textos no HTML
+                    document.getElementById('nota-google').innerText = nota.toFixed(1);
+                    document.getElementById('total-avaliacoes').innerText = total;
+
+                    // Gera as estrelas dinamicamente
+                    const containerEstrelas = document.getElementById('estrelas-google');
+                    containerEstrelas.innerHTML = ''; // Limpa antes de gerar
+                    
+                    for (let i = 1; i <= 5; i++) {
+                        if (i <= Math.floor(nota)) {
+                            // Estrela cheia
+                            containerEstrelas.innerHTML += '<i class="fas fa-star"></i>';
+                        } else if (i === Math.ceil(nota) && nota % 1 !== 0) {
+                            // Estrela metade (ex: 4.7)
+                            containerEstrelas.innerHTML += '<i class="fas fa-star-half-alt"></i>';
+                        } else {
+                            // Estrela vazia
+                            containerEstrelas.innerHTML += '<i class="far fa-star"></i>';
+                        }
+                    }
+
+                    // Esconde o "Carregando" e mostra o conteúdo
+                    document.getElementById('loader').style.display = 'none';
+                    document.getElementById('conteudo-google').style.display = 'block';
+                } else {
+                    document.getElementById('loader').innerText = "Erro ao carregar dados.";
+                    console.error("Erro na API do Google:", status);
+                }
+            });
+        }
+
+        // Inicia a função ao carregar a página
+        window.onload = carregarDadosDoGoogle;
+    </script>
+
+</body>
+</html>

@@ -20,7 +20,7 @@
             --neon-pink: #ff007f;
             --white: #ffffff;
             --black: #000000;
-            --bg-color: #f8f9fa; /* A cor que seu chefe gostou */
+            --bg-color: #f8f9fa; /* Cor clean */
             --google-blue: #4285F4;
             --accent-color: #f1c40f;
             --border-color: #e0e0e0;
@@ -50,7 +50,7 @@
         .google-card {
             background: var(--white);
             padding: 15px; border-radius: 18px; margin-bottom: 20px;
-            display: flex; flex-direction: column; align-items: center;
+            display: flex; flex-direction: column; align-items: center; /* Ajustar */
             text-decoration: none; color: #333; 
             border: 1px solid var(--border-color);
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
@@ -73,8 +73,8 @@
             font-weight: 700; 
             margin-bottom: 12px; 
             gap: 10px;
-            border: 0px solid var(--neon-pink);
-            box-shadow: 0 1px 1px rgba(255, 0, 127, 0.2); 
+            border: 0px solid var(--neon-pink); /* Lembrar de remover isso */
+            box-shadow: 0 1px 1px rgba(255, 0, 127, 0.2); /* 4px e 15px remover */
             transition: 0.3s;
         }
 
@@ -140,7 +140,7 @@
             <div class="google-card" onclick="openReviews()">
                 <div class="rating-header"><i class="fab fa-google"></i> AVALIAÇÕES NO GOOGLE</div>
                 <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <div class="review-count">Clique para ver nossa nota e depoimentos</div>
+                <div class="review-count">Clique aqui e faça uma avaliação</div>
             </div>
 
             <!-- Botão Site Oficial -->

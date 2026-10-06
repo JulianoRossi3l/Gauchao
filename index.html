@@ -19,8 +19,8 @@
     <meta property="og:image" content="https://gauchaoindustrial.com.br/wp-content/uploads/2023/11/LOGO-BRANCA.png">
 
     <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         /* VARIÁVEIS DE CORES */
@@ -37,7 +37,7 @@
             --google-blue: #4285F4;
             --accent-star: #f1c40f;
             --save-contact-bg: #e8f5e9;
-            --partners-bg: #ffffff; /* Fundo do carrossel no claro */
+            --partners-bg: #ffffff;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -49,7 +49,7 @@
                 --text-sub: #aaaaaa;
                 --border: #333333;
                 --save-contact-bg: #1a2e1d;
-                --partners-bg: rgba(255, 255, 255, 0.92); /* Fundo claro para as logos no escuro */
+                --partners-bg: rgba(255, 255, 255, 0.94);
             }
         }
 
@@ -62,9 +62,10 @@
             flex-direction: column; 
             align-items: center; 
             background-color: var(--bg-color); 
-            color: var(--text-main);
+            color: var(--text-main); 
             padding: 20px;
             transition: background-color 0.4s ease, color 0.4s ease;
+            user-select: none;
         }
 
         .container { width: 100%; max-width: 420px; text-align: center; }
@@ -75,12 +76,13 @@
 
         .google-card {
             background: var(--card-bg);
-            padding: 15px; border-radius: 18px; margin-bottom: 20px;
+            padding: 15px; border-radius: 18px; margin-bottom: 16px;
             display: flex; flex-direction: column; align-items: center;
             text-decoration: none; color: var(--text-main); 
             border: 1px solid var(--border);
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             cursor: pointer;
+            transition: transform 0.2s ease;
         }
         .rating-header { color: var(--google-blue); font-weight: 700; font-size: 0.75rem; display: flex; align-items: center; gap: 6px; text-transform: uppercase; }
         .stars { color: var(--accent-star); font-size: 1.1rem; margin: 4px 0; }
@@ -103,7 +105,45 @@
             transition: transform 0.2s ease;
         }
 
-        .social-grid { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 20px; }
+        /* NOVO BOTÃO WI-FI */
+        .btn-wifi {
+            background: linear-gradient(135deg, #0369a1, #0284c7, #0ea5e9);
+            color: #ffffff;
+            border: 1px solid #38bdf8;
+            padding: 16px 18px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 700;
+            margin-bottom: 14px;
+            box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-align: left;
+            width: 100%;
+        }
+        .wifi-left { display: flex; align-items: center; gap: 12px; }
+        .wifi-icon-badge {
+            width: 40px; height: 40px; border-radius: 12px;
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.25);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
+        }
+        .wifi-title-sub { display: flex; flex-direction: column; }
+        .wifi-label-top { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: #e0f2fe; }
+        .wifi-name { font-size: 0.95rem; font-weight: 800; color: #ffffff; }
+        .wifi-badge-copy {
+            background: rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 6px 10px; border-radius: 8px;
+            font-size: 0.75rem; font-weight: 600;
+            display: flex; align-items: center; gap: 6px;
+            color: #ffffff;
+        }
+
+        .social-grid { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
         .social-item {
             background: var(--card-bg);
             width: 100%; aspect-ratio: 1/1; border-radius: 18px;
@@ -112,6 +152,7 @@
             border: 1px solid var(--border);
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             transition: transform 0.2s;
+            cursor: pointer;
         }
 
         .btn-save {
@@ -126,18 +167,20 @@
             gap: 10px; 
             font-weight: 700; 
             border: 2px solid var(--black);
-            margin-bottom: 25px; 
+            margin-bottom: 24px; 
             font-size: 0.9rem;
+            cursor: pointer;
+            width: 100%;
         }
         @media (prefers-color-scheme: dark) {
             .btn-save { border-color: var(--border); }
         }
 
-        .social-item:active, .btn-site:active, .btn-save:active, .google-card:active { transform: scale(0.95); }
+        .social-item:active, .btn-site:active, .btn-wifi:active, .btn-save:active, .google-card:active { transform: scale(0.95); }
 
         /* CARROSSEL DE PARCEIROS AJUSTADO */
         .partners-section {
-            background: var(--partners-bg); /* Fundo sempre visível */
+            background: var(--partners-bg);
             border-radius: 22px; padding: 20px 0; overflow: hidden;
             border: 1px solid var(--border);
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
@@ -147,33 +190,154 @@
         .partners-title { 
             font-size: 0.65rem; 
             font-weight: 800; 
-            color: #888888; /* Cor neutra para o título */
+            color: #888888; 
             text-transform: uppercase; 
             letter-spacing: 1px; 
             margin-bottom: 15px; 
         }
 
-        /* Ajuste nas cores do título no modo escuro */
         @media (prefers-color-scheme: dark) {
             .partners-title { color: #555555; }
         }
 
-        .slider { display: flex; width: calc(140px * 28); animation: scroll 40s linear infinite; }
+        .slider { display: flex; width: calc(140px * 28); animation: scroll 38s linear infinite; }
+        .slider:hover { animation-play-state: paused; }
         .slider img { 
             width: 110px; 
             height: 55px; 
             object-fit: contain; 
             margin: 0 15px; 
-            /* Sombra suave para ajudar a destacar logos coloridas no fundo branco */
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
         }
 
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-140px * 14)); } }
 
-        footer { margin: 30px 0; font-size: 0.7rem; color: var(--text-sub); font-weight: 500; }
+        footer { margin: 26px 0; font-size: 0.7rem; color: var(--text-sub); font-weight: 500; }
+
+        /* TOAST FLUTUANTE */
+        #toast {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            background: rgba(0,0,0,0.92); color: #fff;
+            padding: 12px 18px; border-radius: 16px;
+            font-size: 0.8rem; font-weight: 600;
+            display: none; align-items: center; gap: 8px;
+            z-index: 9999; box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,0,127,0.4);
+            max-width: 90vw;
+            backdrop-filter: blur(8px);
+        }
+
+        /* MODAL WI-FI */
+        #wifi-modal {
+            position: fixed; inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+            display: none; align-items: center; justify-content: center;
+            z-index: 10000; padding: 18px;
+        }
+        .modal-card {
+            background: var(--card-bg); color: var(--text-main);
+            width: 100%; max-width: 380px; border-radius: 26px;
+            padding: 24px; text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            position: relative;
+        }
+        .modal-close {
+            position: absolute; top: 16px; right: 16px;
+            background: rgba(0,0,0,0.06); border: none;
+            width: 32px; height: 32px; border-radius: 50%;
+            cursor: pointer; font-size: 14px; color: var(--text-sub);
+        }
+        .modal-icon {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: #e0f2fe; color: #0284c7;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; margin: 0 auto 12px;
+        }
+        .copied-pill {
+            background: #dcfce7; color: #15803d;
+            font-size: 0.72rem; font-weight: 700;
+            padding: 4px 10px; border-radius: 20px;
+            display: inline-flex; align-items: center; gap: 6px;
+            margin-bottom: 8px;
+        }
+        .creds-box {
+            background: rgba(0,0,0,0.03); border: 1px solid var(--border);
+            border-radius: 16px; padding: 14px; text-align: left;
+            margin: 16px 0; display: flex; flex-direction: column; gap: 10px;
+        }
+        .creds-row { display: flex; justify-content: space-between; align-items: center; }
+        .creds-label { font-size: 0.65rem; text-transform: uppercase; font-weight: 800; color: var(--text-sub); }
+        .creds-val { font-size: 0.95rem; font-weight: 800; }
+        .btn-modal-copy {
+            background: var(--black); color: var(--white);
+            border: none; padding: 6px 12px; border-radius: 8px;
+            font-size: 0.75rem; font-weight: 700; cursor: pointer;
+        }
+        .instructions-box {
+            background: rgba(2, 132, 199, 0.08); border: 1px solid rgba(2, 132, 199, 0.2);
+            border-radius: 14px; padding: 12px; text-align: left;
+            font-size: 0.75rem; color: var(--text-sub); margin-bottom: 16px;
+        }
+        .instructions-box ol { padding-left: 18px; margin-top: 4px; }
+        .instructions-box li { margin-bottom: 3px; }
+        .btn-modal-action {
+            width: 100%; background: #0284c7; color: #fff;
+            border: none; padding: 13px; border-radius: 14px;
+            font-size: 0.85rem; font-weight: 700; cursor: pointer;
+            margin-bottom: 8px;
+        }
+        .btn-modal-secondary {
+            width: 100%; background: transparent; color: var(--text-sub);
+            border: 1px solid var(--border); padding: 10px; border-radius: 14px;
+            font-size: 0.78rem; font-weight: 600; cursor: pointer;
+        }
     </style>
 </head>
 <body>
+
+    <div id="toast"><i class="fas fa-check-circle" style="color: #4ade80;"></i> <span id="toast-text"></span></div>
+
+    <!-- MODAL INFORMATIVO WI-FI -->
+    <div id="wifi-modal" onclick="closeWifiModal()">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeWifiModal()"><i class="fas fa-times"></i></button>
+            <div class="modal-icon"><i class="fas fa-wifi"></i></div>
+            <div class="copied-pill"><i class="fas fa-check"></i> Senha copiada com sucesso!</div>
+            <h3 style="font-size: 1.15rem; font-weight: 800;">Conectar ao Wi-Fi</h3>
+            <p style="font-size: 0.75rem; color: var(--text-sub); margin-top: 2px;">Use as credenciais abaixo para acessar a internet grátis:</p>
+
+            <div class="creds-box">
+                <div class="creds-row">
+                    <div>
+                        <div class="creds-label">Rede Wi-Fi</div>
+                        <div class="creds-val">STARLINK CLIENTE</div>
+                    </div>
+                    <span style="font-size: 0.7rem; background: #e0f2fe; color: #0369a1; font-weight: 700; padding: 2px 8px; border-radius: 6px;">Starlink</span>
+                </div>
+                <div style="border-top: 1px solid var(--border); padding-top: 8px;" class="creds-row">
+                    <div>
+                        <div class="creds-label">Senha</div>
+                        <div class="creds-val" style="font-family: monospace;">Gauchao@310</div>
+                    </div>
+                    <button class="btn-modal-copy" onclick="copyPasswordOnly()"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
+            </div>
+
+            <div class="instructions-box">
+                <strong style="color: #0284c7;"><i class="fas fa-info-circle"></i> Passo a passo:</strong>
+                <ol>
+                    <li>Abra o Wi-Fi do seu celular.</li>
+                    <li>Escolha a rede <strong>STARLINK CLIENTE</strong>.</li>
+                    <li>Cole a senha <strong>Gauchao@310</strong> e pronto!</li>
+                </ol>
+            </div>
+
+            <button class="btn-modal-action" onclick="openDeviceWifiSettings()"><i class="fas fa-cog"></i> Abrir Wi-Fi do Aparelho</button>
+            <button class="btn-modal-secondary" onclick="tryDirectWifi()"><i class="fas fa-link"></i> Tentar Conexão Direta</button>
+        </div>
+    </div>
 
     <div class="container">
         <!-- HEADER COM LOGOTIPO INTELIGENTE -->
@@ -199,19 +363,35 @@
                 <i class="fas fa-globe"></i> VISITE NOSSO SITE
             </a>
 
+            <!-- NOVO BOTÃO CONECTAR AO WI-FI STARLINK CLIENTE -->
+            <div class="btn-wifi" onclick="handleWifiClick()">
+                <div class="wifi-left">
+                    <div class="wifi-icon-badge">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div class="wifi-title-sub">
+                        <span class="wifi-label-top">Wi-Fi Grátis dos Clientes</span>
+                        <span class="wifi-name">STARLINK CLIENTE</span>
+                    </div>
+                </div>
+                <div class="wifi-badge-copy" id="badge-copy-text">
+                    <i class="fas fa-copy"></i>
+                    <span>Copiar Senha</span>
+                </div>
+            </div>
+
             <!-- Grade Social -->
             <nav class="social-grid">
-                <a href="https://wa.me/5567998500310" class="social-item" title="WhatsApp">
+                <a href="https://wa.me/5567998500310" class="social-item" title="WhatsApp" target="_blank">
                     <i class="fab fa-whatsapp" style="color: #25D366;"></i>
                 </a>
-                <a href="javascript:void(0)" onclick="openApp('instagram://user?username=gauchaochurrascaria', 'https://www.instagram.com/_u/gauchaochurrascaria/')" class="social-item">
+                <a href="javascript:void(0)" onclick="openApp('instagram://user?username=gauchaochurrascaria', 'https://www.instagram.com/_u/gauchaochurrascaria/')" class="social-item" title="Instagram">
                     <i class="fab fa-instagram" style="color: #E1306C;"></i>
                 </a>
-                <!-- FACEBOOK (Ajustado para link direto via navegador) -->
-                <a href="https://www.facebook.com/gauchaoindustrial" target="_blank" class="social-item">
+                <a href="https://www.facebook.com/gauchaoindustrial" target="_blank" class="social-item" title="Facebook">
                     <i class="fab fa-facebook" style="color: #1877F2;"></i>
                 </a>
-                <a href="javascript:void(0)" onclick="openApp('linkedin://company/gauchão-restaurante-e-cozinha-industrial', 'https://br.linkedin.com/company/gauch%C3%A3o-restaurante-e-cozinha-industrial')" class="social-item">
+                <a href="javascript:void(0)" onclick="openApp('linkedin://company/gauchão-restaurante-e-cozinha-industrial', 'https://br.linkedin.com/company/gauch%C3%A3o-restaurante-e-cozinha-industrial')" class="social-item" title="LinkedIn">
                     <i class="fab fa-linkedin" style="color: #0077B5;"></i>
                 </a>
                 <a href="javascript:void(0)" onclick="openMaps()" class="social-item" title="Ver no Mapa">
@@ -219,9 +399,9 @@
                 </a>
             </nav>
 
-            <a href="#" class="btn-save" onclick="downloadVCard(); return false;">
+            <button type="button" class="btn-save" onclick="downloadVCard();">
                 <i class="fas fa-user-plus"></i> SALVAR CONTATO NA AGENDA
-            </a>
+            </button>
 
             <!-- Carrossel de Parceiros (Corrigido para Dark Mode) -->
             <section class="partners-section">
@@ -267,6 +447,61 @@
     </div>
 
     <script>
+        const WIFI_SSID = "STARLINK CLIENTE";
+        const WIFI_PASS = "Gauchao@310";
+
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            const toastText = document.getElementById("toast-text");
+            toastText.textContent = msg;
+            toast.style.display = "flex";
+            setTimeout(() => { toast.style.display = "none"; }, 3500);
+        }
+
+        function copyPasswordOnly() {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(WIFI_PASS);
+            } else {
+                const ta = document.createElement("textarea");
+                ta.value = WIFI_PASS;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand("copy");
+                document.body.removeChild(ta);
+            }
+            if ('vibrate' in navigator) { try { navigator.vibrate([40, 50, 40]); } catch(e) {} }
+            showToast("Senha 'Gauchao@310' copiada!");
+        }
+
+        function handleWifiClick() {
+            copyPasswordOnly();
+            document.getElementById("wifi-modal").style.display = "flex";
+            const badge = document.getElementById("badge-copy-text");
+            if (badge) {
+                badge.innerHTML = '<i class="fas fa-check"></i> <span>Copiado!</span>';
+                setTimeout(() => {
+                    badge.innerHTML = '<i class="fas fa-copy"></i> <span>Copiar Senha</span>';
+                }, 3000);
+            }
+        }
+
+        function closeWifiModal() {
+            document.getElementById("wifi-modal").style.display = "none";
+        }
+
+        function openDeviceWifiSettings() {
+            const isAndroid = /Android/i.test(navigator.userAgent);
+            if (isAndroid) {
+                window.location.href = "intent:#Intent;action=android.settings.WIFI_SETTINGS;end";
+            } else {
+                showToast("No iPhone: acesse Ajustes > Wi-Fi e cole a senha na rede STARLINK CLIENTE");
+            }
+        }
+
+        function tryDirectWifi() {
+            window.location.href = `WIFI:S:${WIFI_SSID};T:WPA;P:${WIFI_PASS};;`;
+        }
+
         function openReviews() {
             window.location.href = "https://search.google.com/local/reviews?placeid=ChIJ2cCOKZ6ZkJQRhQ7pqTl6xcc";
         }
@@ -301,6 +536,7 @@ END:VCARD`;
             link.download = "Gauchao_Industrial.vcf";
             link.href = url;
             link.click();
+            showToast("Contato salvo!");
         }
     </script>
 </body>
